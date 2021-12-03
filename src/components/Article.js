@@ -42,7 +42,7 @@ export default function Article() {
           <div className="category-description">
             <div className="single-category common">
               <h3 style={{ textAlign: "center", marginBottom: "5px" }}>
-                category: {items && items.subsection_name}
+                category: {items && items.section_name}
               </h3>
             </div>
             <div className="single-description common">
