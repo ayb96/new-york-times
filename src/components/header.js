@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import { useArticleContext } from "../Context/ArticleContext";
 export default function Header() {
-  const { q, setQ, items, setItems } = useArticleContext();
+  const { q, setQ, items, setItems, retrived } = useArticleContext();
   const handelchange = () => {
     const fetchArticle = async () => {
- 
+      if (q === "" || q == null) {
+
+           setItems([...retrived]);
+          console.log("retrived", retrived);
+          return ;
+     
+      }
+
+
       const res = await fetch(
         `https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=headline:(\"${q}\")&api-key=OAD0Qz0csaoDZLpw5ZR74TCeSjynnabJ`
       );

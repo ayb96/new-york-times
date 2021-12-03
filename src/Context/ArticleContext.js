@@ -9,11 +9,14 @@ export function useArticleContext() {
 export function ArticleContextProvider(props) {
   const [q, setQ] = useState("");
   const [items, setItems] = useState([]);
+  const [retrived, setRetrived] = useState([]);
   const value = {
     q,
     setQ,
     items,
     setItems,
+    retrived,
+    setRetrived,
   };
 
   useEffect(() => {
@@ -23,6 +26,7 @@ export function ArticleContextProvider(props) {
       );
       const data = await res.json();
       setItems(data.response.docs);
+      setRetrived(data.response.docs);
       console.log("2314342343243242334", q);
     };
     getArticles();
